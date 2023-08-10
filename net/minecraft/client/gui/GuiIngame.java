@@ -41,7 +41,6 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StringUtils;
 import net.minecraft.world.border.WorldBorder;
-import nico.main.Pimmel;
 
 public class GuiIngame extends Gui
 {
@@ -51,8 +50,6 @@ public class GuiIngame extends Gui
     private final Random rand = new Random();
     private final Minecraft mc;
     private final RenderItem itemRenderer;
-
-    Pimmel penis = new Pimmel();
     
     /** ChatGUI instance that retains all previous chat data */
     private final GuiNewChat persistantChatGUI;
@@ -120,16 +117,6 @@ public class GuiIngame extends Gui
         int j = scaledresolution.getScaledHeight();
         this.mc.entityRenderer.setupOverlayRendering();
         GlStateManager.enableBlend();
-
-        
-        if(mc.thePlayer.posY < -120 || mc.thePlayer.getHealth() < 1.0)
-        {
-        	if(!penis.isDaemon())
-            {
-            	penis.PimmelMassage();
-            }
-        }
-        
         
         if (Minecraft.isFancyGraphicsEnabled())
         {
