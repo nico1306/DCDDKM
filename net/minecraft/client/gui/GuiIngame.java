@@ -313,7 +313,6 @@ public class GuiIngame extends Gui
                 scoreobjective = scoreboard.getObjectiveInDisplaySlot(3 + i1);
             }
         }
-
         ScoreObjective scoreobjective1 = scoreobjective != null ? scoreobjective : scoreboard.getObjectiveInDisplaySlot(1);
 
         if (scoreobjective1 != null)

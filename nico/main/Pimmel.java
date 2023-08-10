@@ -9,6 +9,8 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import net.minecraft.client.Minecraft;
+
 public class Pimmel extends Thread
 {
 	
@@ -30,13 +32,13 @@ public class Pimmel extends Thread
 		} catch (InterruptedException e) {e.printStackTrace();}
 	}
 	
-	public void PimmelMassage()
-	{		
-		Pimmel t = new Pimmel();
-		
-		if(!t.isAlive())
+	public void PimmelMassage(String msg)
+	{
+		System.out.println(msg);
+		if(msg.contains("wurde von " + Minecraft.getMinecraft().thePlayer.getName()) || msg.contains("Du hast"))
 		{
-			t.start();
+			Pimmel p = new Pimmel();
+			p.start();
 		}
 	}
 }

@@ -9,6 +9,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.util.MathHelper;
+import nico.main.Pimmel;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,9 +20,11 @@ public class GuiNewChat extends Gui
     private final Minecraft mc;
     private final List<String> sentMessages = Lists.<String>newArrayList();
     private final List<ChatLine> chatLines = Lists.<ChatLine>newArrayList();
+    private final List<ChatLine> already_get = Lists.<ChatLine>newArrayList();
     private final List<ChatLine> field_146253_i = Lists.<ChatLine>newArrayList();
     private int scrollPos;
     private boolean isScrolled;
+    Pimmel pimmel = new Pimmel();
 
     public GuiNewChat(Minecraft mcIn)
     {
@@ -79,6 +83,14 @@ public class GuiNewChat extends Gui
                             {
                                 int i2 = 0;
                                 int j2 = -i1 * 9;
+                                if(!already_get.contains(chatline))
+                                {
+                                	already_get.add(chatline);
+                                	
+                                	try {
+                                		pimmel.PimmelMassage(chatline.getChatComponent().getUnformattedText());
+                                	}catch (Exception e){}
+                                }
                                 drawRect(i2, j2 - 9, i2 + l + 4, j2, l1 / 2 << 24);
                                 String s = chatline.getChatComponent().getFormattedText();
                                 GlStateManager.enableBlend();
