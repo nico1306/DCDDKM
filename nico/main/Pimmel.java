@@ -34,10 +34,19 @@ public class Pimmel extends Thread
 	
 	public void PimmelMassage(String msg)
 	{
-		System.out.println(msg);
-		if(msg.contains("wurde von " + Minecraft.getMinecraft().thePlayer.getName()) || msg.contains("Du hast"))
+		if(msg.contains("wurde von"))
+		{
+			if(msg.contains(Minecraft.getMinecraft().thePlayer.getName()))
+			{
+				Pimmel p = new Pimmel();
+				System.out.println(msg);
+				p.start();
+			}
+			
+		}else if(msg.contains("Du hast"))
 		{
 			Pimmel p = new Pimmel();
+			System.out.println(msg);
 			p.start();
 		}
 	}
